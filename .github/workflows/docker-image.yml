@@ -2,15 +2,32 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag starwars:$(date +%s)
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag starwars:$(date +%s)
+
+  # deploy:
+  #   needs: build
+  #   runs-on: self-hosted
+
+  #   steps:
+  #     - name: Checkout files
+  #       uses: actions/checkout@v3
+
+  #     - name: Get tag name
+  #       uses: starwars:$(date +%s)
+
+  #     - name: install doctl
+  #       uses: digitalocean/action-doctl@v2
+  #       with:
+  #         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+  #     - name: Deploy the Docker image to digitalocean
+  #       run: doctl compute droplet create --size 512mb --image $(cat tag) --region sfo2 --ssh-keys $(cat ssh-key) --wait --tag-names $(cat tag) --name $(cat tag)
