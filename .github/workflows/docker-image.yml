@@ -17,9 +17,9 @@ jobs:
       # - name: build the Docker image
       #   run: docker build . -t starwarsapp
 
-      - name: deploy using kubernetes
-        run: kubectl apply -f k8s-node-app/starwars.deployment.yml
-          kubectl apply -f k8s-node-app/starwars.deployment.yml
+      # - name: deploy using kubernetes
+      #   run: kubectl apply -f k8s-node-app/starwars.deployment.yml
+      #     kubectl apply -f k8s-node-app/starwars.deployment.yml
 
   # deploy:
   #   needs: build
