@@ -15,7 +15,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: build the Docker image
-        run: docker-compose up -d --build
+        run: docker build . -t starwarsapp
 
       - name: deploy using kubernetes
         run: kubectl apply -f k8s-node-app/starwars.deployment.yml
