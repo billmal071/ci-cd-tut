@@ -34,9 +34,13 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache,mode=max
 
-      - name: deploy to digitalocean
-        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
+      # - name: deploy to digitalocean
+      #   run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
 
   # run and pull image on digitalocean
-  # deploy:
-  #   runs-on: self-hosted
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: deploy to digitalocean
+        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
