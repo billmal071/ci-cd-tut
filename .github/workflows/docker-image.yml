@@ -17,8 +17,8 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
-      # - name: Build the Docker image
-      #   run: docker-compose up -d --build
+      - name: Build the Docker image
+        run: docker-compose up -d --build
 
       # - name: deploy using kubernetes
       #   run: |
