@@ -30,4 +30,12 @@ jobs:
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:latest
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache,mode=max
-# run and pull image on digitalocean
+
+  # run and pull image on digitalocean
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
