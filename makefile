@@ -10,6 +10,11 @@ run: Dockerfile docker-compose.yml .dockerignore
 destroy:
 	docker-compose down
 
+push: Dockerfile docker-compose.yml .dockerignore
+	read -p "Enter the name of the image to push: " DOCKER_IMAGE_NAME
+	echo "Pushing image ${DOCKER_IMAGE_NAME}"
+	docker push ${DOCKER_IMAGE_NAME}
+
 init:
 	terraform init
 
