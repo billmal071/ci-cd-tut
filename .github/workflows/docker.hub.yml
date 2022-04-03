@@ -43,4 +43,4 @@ jobs:
 
     steps:
       - name: deploy to digitalocean
-        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest --privileged=true
+        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
