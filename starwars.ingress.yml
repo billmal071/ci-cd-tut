@@ -5,8 +5,9 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
+  ingressClassName: nginx
   rules:
-    - host: billy-test.com
+    - host: billytest.hopto.org
       http:
         paths:
           - pathType: Prefix
