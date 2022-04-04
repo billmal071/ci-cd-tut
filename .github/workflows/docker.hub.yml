@@ -34,13 +34,19 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/nodeapp:buildcache,mode=max
 
-      # - name: deploy to digitalocean
-      #   run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
-
   # run and pull image on digitalocean
   deploy:
     runs-on: self-hosted
 
     steps:
-      - name: deploy to digitalocean
-        run: docker run -p 3000:3000 godofshinobi/nodeapp:latest
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Deploy to DigitalOcean Kubernetes
+        run: |
+          kubectl apply -f starwars.deployment.prod.yml
+
+      # - name: Verify deployment
+      #   run: kubectl rollout status deployment/static-example
