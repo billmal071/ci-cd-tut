@@ -33,7 +33,7 @@ metadata:
 spec:
   selector:
     app: starwars
-  type: ClusterIP
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 3000
