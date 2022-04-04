@@ -26,9 +26,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: starwars-service
-  kubernetes.digitalocean.com/load-balancer-id: "92d9a3c4-6db3-496b-a4e4-ec0fef86edc7"
-  service.beta.kubernetes.io/do-loadbalancer-size-unit: "3"
-  service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "false"
+  annotations:
+    kubernetes.digitalocean.com/load-balancer-id: "92d9a3c4-6db3-496b-a4e4-ec0fef86edc7"
+    service.beta.kubernetes.io/do-loadbalancer-size-unit: "3"
+    service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "false"
 spec:
   selector:
     app: starwars
