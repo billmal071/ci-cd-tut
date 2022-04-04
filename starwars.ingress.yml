@@ -2,8 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: myingress
-  labels:
-    name: myingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
     - host: billy-test.com
@@ -13,6 +13,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: starwars-service
+                name: starwars
                 port:
-                  number: 3000
+                  number: 80
