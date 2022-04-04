@@ -46,7 +46,7 @@ jobs:
 
       - name: Deploy to DigitalOcean Kubernetes
         run: |
-          kubectl apply -f starwars.deployment.prod.yml
+          kubectl apply -f $GITHUB_WORKSPACE/starwars.deployment.prod.yml
 
       # - name: Verify deployment
       #   run: kubectl rollout status deployment/static-example
