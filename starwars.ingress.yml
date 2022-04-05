@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: myingress
-  namespace: backend
 spec:
   ingressClassName: nginx
   rules:
@@ -13,6 +12,6 @@ spec:
             path: "/"
             backend:
               service:
-                name: starwars
+                name: starwars-service
                 port:
                   number: 3000
