@@ -4,3 +4,15 @@ controller:
     requests:
       cpu: 100m
       memory: 90Mi
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
+      service.beta.kubernetes.io/do-loadbalancer-tls-passthrough: "true"
+  config:
+    use-proxy-protocol: "true"
+    keep-alive-requests: "10000"
+    upstream-keep-alive-requests: "1000"
+    worker-proceses: "auto"
+    max-worker-connections: "65535"
+    use-gzip: "true"
