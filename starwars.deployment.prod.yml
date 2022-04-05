@@ -33,6 +33,7 @@ metadata:
 spec:
   selector:
     app: starwars
+    type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
