@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: starwars
+  namespace: backend
 spec:
   selector:
     matchLabels:
@@ -26,6 +27,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: starwars-service
+  namespace: backend
   annotations:
     kubernetes.digitalocean.com/load-balancer-id: "92d9a3c4-6db3-496b-a4e4-ec0fef86edc7"
     service.beta.kubernetes.io/do-loadbalancer-size-unit: "3"
